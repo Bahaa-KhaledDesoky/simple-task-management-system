@@ -1,0 +1,122 @@
+Goal
+
+This assignment will allow us to see how you approach API design, security, and code organization in Spring Boot.
+Build a small REST API using Java Spring Boot that handles user authentication and a simple task management system.
+This assignment is designed to evaluate your Spring Boot skills, code structure, and problem-solving level (junior, mid, or senior).
+
+
+
+Requirements
+1. User Registration
+Endpoint: POST /auth/register
+
+Request body:
+{
+  "email": "user@example.com",
+  "password": "mypassword",
+  "name": "John Doe"
+}
+
+#Done
+Store user with hashed password (e.g., BCrypt).
+
+
+2. User Login
+Endpoint: POST /auth/login
+Request body:
+{
+  "email": "user@example.com",
+  "password": "mypassword"
+}
+#Done
+
+On success: return accessToken (JWT preferred).
+On failure: return HTTP 400 with JSON error.
+
+#Done
+
+3. Task Management
+Only accessible with valid token.
+
+Endpoints:
+
+POST /tasks → Create task {title, description, status} #Done
+
+GET /tasks → Fetch all tasks for logged-in user only#Done
+
+PUT /tasks/{id} → Update task status (e.g., open → done)#Done
+
+DELETE /tasks/{id} → Delete a task #Done
+
+4. Logout
+Endpoint: POST /auth/logout #Done
+
+Invalidate token/session (in-memory or JWT expiration).
+
+Exceptional Scenarios
+Invalid email/password → 400 Bad Request #Done
+
+Accessing /tasks without token → 401 Unauthorized #Done
+
+Accessing another user’s task → 403 Forbidden #Done
+
+Non-Goals
+No need for advanced JWT refresh logic. #Done
+
+No frontend/UI needed (test with Postman or curl).
+
+No external DB required (H2 in-memory DB acceptable). #Done
+
+Evaluation Criteria
+Must-Have
+RESTful endpoints with correct HTTP status codes. #Done
+
+Spring Boot best practices (Controller, Service, Repository layers). #Done
+
+Authentication & security:
+
+Token-based auth (JWT or session token). #Done
+
+Password hashing (BCrypt). #Done
+
+Error handling with @ControllerAdvice. #Done
+
+Organized project structure with clear packages. #Done
+
+Public GitHub/GitLab repository.
+
+Nice-to-Have (For Senior Candidates)
+JWT with expiration & refresh handling. #Done
+
+DTO & Entity separation with mapping. #Done
+
+Global exception handling with custom error responses. #Done
+
+Unit tests (JUnit) for at least one endpoint.
+
+Clean commits, meaningful Git history.
+
+Expected Time
+2–4 hours.
+
+Scoring Rubric (100 Points)
+Category
+Points
+API Functionality
+30
+Spring Boot Structure
+20
+Authentication & Security
+20
+Error Handling
+10
+Testing (JUnit)
+10
+Git & Project Organization
+10
+Submission
+Push source code to a public GitHub/GitLab repository.
+
+Include instructions in a README.md on how to run the project.
+
+Bonus: Include example curl/Postman requests. #Done
