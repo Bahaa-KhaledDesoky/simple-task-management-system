@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.Dtos.LogInRequest;
-import com.example.demo.Dtos.SignIn;
+import com.example.demo.Dtos.Registration;
 import com.example.demo.Dtos.TokenResponse;
 import com.example.demo.Services.AuthService;
 import com.example.demo.Services.UserServiceImp;
@@ -35,7 +35,7 @@ class AuthControllerTest {
     @Test
     void testRegister() {
         // given
-        SignIn signIn = new SignIn("test@gmail.com","test","000000");
+        Registration signIn = new Registration("test@gmail.com","test","000000");
         when(userServiceImp.signUp(signIn)).thenReturn(1);
 
         // when

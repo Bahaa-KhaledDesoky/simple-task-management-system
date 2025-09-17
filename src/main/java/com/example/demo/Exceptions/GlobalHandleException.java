@@ -2,6 +2,7 @@ package com.example.demo.Exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -10,6 +11,13 @@ import java.util.Map;
 
 @ControllerAdvice
 public class GlobalHandleException {
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        Map<String, String> errorDetails = new HashMap<>();
+        ex.getBindingResult().getFieldErrors().forEach(error ->
+                errorDetails.put(error.getField(), error.getDefaultMessage()));
+        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+    }
 
     @ExceptionHandler(UserExistException.class)
     public ResponseEntity<?> handleUserExistException(UserExistException ex){

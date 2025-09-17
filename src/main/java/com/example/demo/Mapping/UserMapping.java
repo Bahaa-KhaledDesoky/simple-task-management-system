@@ -1,5 +1,6 @@
 package com.example.demo.Mapping;
 
+import com.example.demo.Dtos.Registration;
 import com.example.demo.model.AppUser;
 import com.example.demo.Dtos.SignIn;
 import org.springframework.stereotype.Component;
@@ -7,11 +8,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserMapping {
 
-    public AppUser toUser(SignIn signIn){
+    public AppUser toUser(Registration registration){
         return AppUser.builder()
-                .name(signIn.name())
-                .email(signIn.email())
-                .password(signIn.password())
+                .name(registration.name())
+                .email(registration.email())
+                .password(registration.password())
                 .build();
     }
 //    public UserDto mapUserDto(AppUser appUser)

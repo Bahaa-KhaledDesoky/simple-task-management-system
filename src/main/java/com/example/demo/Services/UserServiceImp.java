@@ -1,7 +1,7 @@
 package com.example.demo.Services;
 
 import com.example.demo.Dtos.LogInRequest;
-import com.example.demo.Dtos.SignIn;
+import com.example.demo.Dtos.Registration;
 import com.example.demo.Exceptions.UserExistException;
 import com.example.demo.Exceptions.UserNotFoundException;
 import com.example.demo.Exceptions.WrongPasswordExceprion;
@@ -32,12 +32,12 @@ public class UserServiceImp implements UserService {
         return user;
     }
     @Override
-    public Integer signUp(SignIn signIn) {
+    public Integer signUp(Registration registration) {
         try {
-            if (userExist(signIn.email())) {
+            if (userExist(registration.email())) {
                 throw new UserExistException();
             }
-            AppUser user = userMapping.toUser(signIn);
+            AppUser user = userMapping.toUser(registration);
             user.setPassword(hashPassword(user.getPassword()));
             return userRepository.save(user).getId();
         }

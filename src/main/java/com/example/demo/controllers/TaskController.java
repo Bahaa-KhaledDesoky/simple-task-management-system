@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -31,7 +32,7 @@ public class TaskController {
             return ResponseEntity.ok(HttpStatus.ACCEPTED);
     }
     @PostMapping
-    public ResponseEntity<?> creatTask(HttpServletRequest request,@RequestBody TaskDto taskDto) {
+    public ResponseEntity<?> creatTask(HttpServletRequest request,@Validated @RequestBody TaskDto taskDto) {
         AppUser appUser=userServiceImp.getUser(request);
         taskService.creatTask(appUser,taskDto);
         return ResponseEntity.ok(HttpStatus.CREATED);
