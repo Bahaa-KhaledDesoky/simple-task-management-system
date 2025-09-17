@@ -41,6 +41,15 @@ public class JwtUtils {
     private Claims extractAllClaims(String token) {
         return Jwts.parser().setSigningKey(secret).build().parseClaimsJws(token).getBody();
     }
+    public boolean isAccessToken(String token) {
+        Claims claims = extractAllClaims(token);
+        return "access".equals(claims.get("type"));
+    }
+
+    public boolean isRefreshToken(String token) {
+        Claims claims = extractAllClaims(token);
+        return "refresh".equals(claims.get("type"));
+    }
 
     private Boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
@@ -69,11 +78,13 @@ public class JwtUtils {
 
     public String generateToken(String email) {
         Map<String, Object> claims = new HashMap<>();
+        claims.put("type", "access");
         return createToken(claims, email);
     }
 
     public String generateRefreshToken(String email) {
         Map<String, Object> claims = new HashMap<>();
+        claims.put("type", "refresh");
         return createRefreshToken(claims, email);
     }
 
