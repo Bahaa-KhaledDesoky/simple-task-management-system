@@ -90,7 +90,7 @@ Typical flow:
 Example endpoints (adjust names/paths as in your code):
 - `POST /api/auth/login` — returns `{ accessToken, refreshToken }`
 - `POST /api/auth/refresh` — accepts refresh token and returns new `{ accessToken }`
-- `POST /api/system/logout` — optional, to invalidate refresh token server-side
+- `POST /api/system/logout` — to invalidate refresh token server-side
 
 Example headers for protected endpoints:
 ```
@@ -116,8 +116,8 @@ Base URL: `http://localhost:8080/api`
 
 Example endpoints (adjust to your implementation):
 - `GET /api/tasks` — list tasks
-- `POST /api/tasks` — create a task
-- `PUT /api/tasks/{id}/{status}` — Status update
+- `POST /api/tasks` — create a task with "Open" Status
+- `PUT /api/tasks/{id}` — Status update to be "Done"
 - `DELETE /api/tasks/{id}` — delete a task
 
 Add the `Authorization: Bearer <accessToken>` header when authentication is required.
@@ -126,8 +126,7 @@ Add the `Authorization: Bearer <accessToken>` header when authentication is requ
 ```json
 {
   "title": "Write README",
-  "description": "Prepare project documentation",
-  "status": "PENDING"
+  "description": "Prepare project documentation"
 }
 ```
 
