@@ -40,7 +40,7 @@ mvn -v
 
 ### Clone
 ```bash
-git clone <your-repo-url>.git
+git clone https://github.com/Bahaa-KhaledDesoky/simple-task-management-system.git
 cd task-management-system
 ```
 
@@ -90,7 +90,7 @@ Typical flow:
 Example endpoints (adjust names/paths as in your code):
 - `POST /api/auth/login` — returns `{ accessToken, refreshToken }`
 - `POST /api/auth/refresh` — accepts refresh token and returns new `{ accessToken }`
-- `POST /api/auth/logout` — optional, to invalidate refresh token server-side
+- `POST /api/system/logout` — optional, to invalidate refresh token server-side
 
 Example headers for protected endpoints:
 ```
@@ -117,7 +117,7 @@ Base URL: `http://localhost:8080/api`
 Example endpoints (adjust to your implementation):
 - `GET /api/tasks` — list tasks (query: `status`, `q`)
 - `POST /api/tasks` — create a task
-- `PUT /api/tasks/{id}` — full update
+- `PUT /api/tasks/{id}/{status}` — Status update
 - `DELETE /api/tasks/{id}` — delete a task
 
 Add the `Authorization: Bearer <accessToken>` header when authentication is required.
@@ -142,11 +142,10 @@ mvn test
 ## Common Issues
 - Port already in use: change `server.port` in application properties
 - Java version mismatch: ensure JDK 17+ is active
+- make sure the lombok is working from Annotation setting
 - Database connection failures: verify `spring.datasource.*` settings
 - 401 Unauthorized: ensure `Authorization: Bearer <accessToken>` header is present and token is valid
 
-## License
-This project is provided as-is. Add an explicit license if required (e.g., MIT, Apache-2.0).
 
 
 
