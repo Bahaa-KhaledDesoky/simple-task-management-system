@@ -47,14 +47,14 @@ public class JwtUtils {
     }
     public boolean isAccessToken(String token) {
         Claims claims = extractAllClaims(token);
-        boolean flag= "access".equals(claims.get("type"));
-        return flag;
+        return  "access".equals(claims.get("type"));
+
     }
 
     public boolean isRefreshToken(String token) {
         Claims claims = extractAllClaims(token);
-        boolean flag= "refresh".equals(claims.get("type"));
-        return flag;
+        return "refresh".equals(claims.get("type"));
+
     }
 
     private Boolean isTokenExpired(String token) {
