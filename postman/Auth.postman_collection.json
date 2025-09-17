@@ -46,7 +46,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"khaled@gmail.com\",\r\n    \"name\":\"khaled\",\r\n    \"password\":\"000000\"\r\n}",
+					"raw": "{\r\n    \"email\":\"khaled@gmail.com\",\r\n    \"name\":\"khaled\",\r\n    \"password\":\"0bB!0000\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -64,6 +64,27 @@
 						"api",
 						"auth",
 						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Access Token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/auth/eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWRAZ21haWwuY29tIiwiaWF0IjoxNzU4MDkyNjQwLCJleHAiOjE3NTgwOTYyNDB9.6rycHHqgLBfo-wuVhbgCGTsTwaXe0E8i5_SHcerS26U",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWRAZ21haWwuY29tIiwiaWF0IjoxNzU4MDkyNjQwLCJleHAiOjE3NTgwOTYyNDB9.6rycHHqgLBfo-wuVhbgCGTsTwaXe0E8i5_SHcerS26U"
 					]
 				}
 			},

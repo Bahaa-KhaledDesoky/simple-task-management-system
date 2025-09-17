@@ -7,10 +7,33 @@
 	},
 	"item": [
 		{
-			"name": "New Request",
+			"name": "Log out",
 			"request": {
-				"method": "GET",
-				"header": []
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWRAZ21haWwuY29tIiwiaWF0IjoxNzU4MDkyNjQxLCJleHAiOjE3NTg2OTc0NDF9.-15XcJlHKLYntwaRDHdG_E-EgBCsKK_ImDruoBxX3Pc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/system/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"system",
+						"logout"
+					]
+				}
 			},
 			"response": []
 		}
