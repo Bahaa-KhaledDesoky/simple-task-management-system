@@ -74,7 +74,7 @@ spring.h2.console.enabled=true
 
 # JWT (example; adjust to your implementation)
 app.jwt.secret=change-me
-app.jwt.access-token-ttl=900s      # 60 minutes
+app.jwt.access-token-ttl=60s      # 1 minutes
 app.jwt.refresh-token-ttl=7d       # 7 days
 ```
 For MySQL/PostgreSQL, replace the datasource URL, username, password, and driver if needed.
