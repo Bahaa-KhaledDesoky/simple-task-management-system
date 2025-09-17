@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import java.security.Key;
+import java.time.Duration;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,8 +23,10 @@ import javax.crypto.SecretKey;
 public class JwtUtils {
     @Value("${spring.app.JwtSecret}")
     private String secret ;
-//    @Value("${spring.app.JwtExpirationMs}")
-//    private String JwtExpirationMs;
+    @Value("${app.jwt.access-token-ttl}")
+    private Duration accessTokenExpiration;
+    @Value("${app.jwt.refresh-token-ttl}")
+    private Duration accessRefreshExpiration;
     public String extractEmail(String token) {
         return extractClaim(token, Claims::getSubject);
     }
@@ -47,7 +50,7 @@ public class JwtUtils {
     }
     public boolean isAccessToken(String token) {
         Claims claims = extractAllClaims(token);
-        return  "access".equals(claims.get("type"));
+        return "access".equals(claims.get("type"));
 
     }
 
@@ -85,20 +88,20 @@ public class JwtUtils {
     public String generateToken(String email) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("type", "access");
-        return createToken(claims, email, 1000 * 60 * 1);
+        return createToken(claims, email, accessTokenExpiration);
     }
 
     public String generateRefreshToken(String email) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("type", "refresh");
-        return createToken(claims, email, 1000 * 60 * 60 * 24 * 7);
+        return createToken(claims, email, accessRefreshExpiration);
     }
-    private String createToken(Map<String, Object> claims, String subject, Integer expire) {
+    private String createToken(Map<String, Object> claims, String subject, Duration expire) {
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() +expire ))
+                .setExpiration(new Date(System.currentTimeMillis() +expire.toMillis() ))
                 .signWith(key(), SignatureAlgorithm.HS256)
                 .compact();
     }
