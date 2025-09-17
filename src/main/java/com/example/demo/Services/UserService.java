@@ -14,5 +14,5 @@ public interface UserService {
     AppUser findUserById(Integer id);
     AppUser findUserByEmail(String email);
     TokenResponse login(LogInRequest logInRequest);
-    boolean logOut(Integer id);
+    boolean logOut(AppUser user);
 }

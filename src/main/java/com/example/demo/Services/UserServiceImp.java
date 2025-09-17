@@ -107,10 +107,9 @@ public class UserServiceImp implements UserService {
 
     }
     @Override
-    public boolean logOut(Integer id){
+    public boolean logOut(AppUser user){
 
         try {
-            AppUser user=findUserById(id);
             user.setRefreshToken(null);
             userRepository.save(user);
             return true;

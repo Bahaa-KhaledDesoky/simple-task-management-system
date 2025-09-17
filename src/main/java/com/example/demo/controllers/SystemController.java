@@ -18,7 +18,7 @@ public class SystemController {
     public ResponseEntity<?> logout(HttpServletRequest request)
     {
         AppUser user =userServiceImp.getUser(request);
-        boolean flag = userServiceImp.logOut(user.getId());
+        boolean flag = userServiceImp.logOut(user);
         return ResponseEntity.ok(flag);
     }
 
