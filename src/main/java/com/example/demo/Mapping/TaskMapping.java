@@ -18,7 +18,6 @@ public class TaskMapping {
         return Task.builder()
                 .title(taskDto.title())
                 .description(taskDto.description())
-                .status(taskDto.status())
                 .build();
     }
 }

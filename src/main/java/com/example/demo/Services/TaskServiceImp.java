@@ -48,6 +48,7 @@ public class TaskServiceImp implements TaskService {
         try {
             Task task=taskMapping.mapDtoToTask(taskDto);
             task.setUser(user);
+            task.setStatus("Open");
             taskRepository.save(task);
         }
         catch (RuntimeException e)
@@ -67,11 +68,11 @@ public class TaskServiceImp implements TaskService {
             throw new TaskForbiddenException();
     }
     @Override
-    public void updateTask(Integer taskId,Integer userId, String status) {
+    public void updateTask(Integer taskId,Integer userId) {
         if(taskExistforUser(taskId,userId))
         {
             Task task =findTaskById(taskId);
-            task.setStatus(status);
+            task.setStatus("Done");
             taskRepository.save(task);
         }
         else

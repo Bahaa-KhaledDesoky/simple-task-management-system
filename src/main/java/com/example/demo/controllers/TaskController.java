@@ -24,11 +24,11 @@ public class TaskController {
         AppUser user= userServiceImp.getUser(request);
         return ResponseEntity.ok(taskService.getAllTaskOfUser(user));
     }
-    @PutMapping("/{taskid}/{status}")
-    public ResponseEntity<?> updateTaskOfUser(HttpServletRequest request, @PathVariable Integer taskid, @PathVariable String status)
+    @PutMapping("/{taskid}")
+    public ResponseEntity<?> updateTaskOfUser(HttpServletRequest request, @PathVariable Integer taskid)
     {
             AppUser user =userServiceImp.getUser(request);
-            taskService.updateTask(taskid,user.getId(),status);
+            taskService.updateTask(taskid,user.getId());
             return ResponseEntity.ok(HttpStatus.ACCEPTED);
     }
     @PostMapping

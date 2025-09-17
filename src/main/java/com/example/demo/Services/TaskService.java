@@ -12,5 +12,5 @@ public interface TaskService {
     Task findTaskById(Integer id);
     void creatTask(AppUser user,TaskDto taskDto);
     boolean deleteTask(Integer taskId,Integer userId);
-     void updateTask(Integer taskId,Integer userId, String status);
+     void updateTask(Integer taskId,Integer userId);
 }
