@@ -22,8 +22,8 @@ import javax.crypto.SecretKey;
 public class JwtUtils {
     @Value("${spring.app.JwtSecret}")
     private String secret ;
-    @Value("${spring.app.JwtExpirationMs}")
-    private String JwtExpirationMs;
+//    @Value("${spring.app.JwtExpirationMs}")
+//    private String JwtExpirationMs;
     public String extractEmail(String token) {
         return extractClaim(token, Claims::getSubject);
     }
@@ -39,16 +39,22 @@ public class JwtUtils {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser().setSigningKey(secret).build().parseClaimsJws(token).getBody();
+        return Jwts.parser()
+                .verifyWith((SecretKey) key())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
     }
     public boolean isAccessToken(String token) {
         Claims claims = extractAllClaims(token);
-        return "access".equals(claims.get("type"));
+        boolean flag= "access".equals(claims.get("type"));
+        return flag;
     }
 
     public boolean isRefreshToken(String token) {
         Claims claims = extractAllClaims(token);
-        return "refresh".equals(claims.get("type"));
+        boolean flag= "refresh".equals(claims.get("type"));
+        return flag;
     }
 
     private Boolean isTokenExpired(String token) {
@@ -79,26 +85,24 @@ public class JwtUtils {
     public String generateToken(String email) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("type", "access");
-        return createToken(claims, email);
+        return createToken(claims, email, 1000 * 60 * 1);
     }
 
     public String generateRefreshToken(String email) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("type", "refresh");
-        return createRefreshToken(claims, email);
+        return createToken(claims, email, 1000 * 60 * 60 * 24 * 7);
+    }
+    private String createToken(Map<String, Object> claims, String subject, Integer expire) {
+        return Jwts.builder()
+                .setClaims(claims)
+                .setSubject(subject)
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() +expire ))
+                .signWith(key(), SignatureAlgorithm.HS256)
+                .compact();
     }
 
-    private String createToken(Map<String, Object> claims, String subject) {
-        return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() +  1000 * 60 * 60  ))
-                .signWith(SignatureAlgorithm.HS256, secret).compact();
-    }
-
-    private String createRefreshToken(Map<String, Object> claims, String subject) {
-        return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 7))
-                .signWith(SignatureAlgorithm.HS256, secret).compact();
-    }
     private Key key()
     {
         return Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));

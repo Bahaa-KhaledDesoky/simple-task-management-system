@@ -15,7 +15,7 @@ public class AuthService {
     public TokenResponse getRefreshToken(String email) {
             String newAccessToken = jwtUtil.generateToken(email);
             String newRefreshToken = jwtUtil.generateRefreshToken(email);
-            return new TokenResponse(newAccessToken, newRefreshToken);
+            return new TokenResponse(newRefreshToken,newAccessToken );
     }
 
 
