@@ -33,7 +33,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
             CustomUserDetails userDetails = this.userDetailsService.loadUserByUsername(email);
 
-            if (jwtUtils.validateToken(jwt, userDetails)) {
+            if (jwtUtils.validateToken(jwt, userDetails)&&jwtUtils.isAccessToken(jwt)) {
                 var x =userDetails.getAuthorities();
                 UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
