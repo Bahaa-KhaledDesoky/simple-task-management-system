@@ -115,7 +115,7 @@ curl -X POST http://localhost:8080/api/auth/refresh \
 Base URL: `http://localhost:8080/api`
 
 Example endpoints (adjust to your implementation):
-- `GET /api/tasks` — list tasks (query: `status`, `q`)
+- `GET /api/tasks` — list tasks
 - `POST /api/tasks` — create a task
 - `PUT /api/tasks/{id}/{status}` — Status update
 - `DELETE /api/tasks/{id}` — delete a task
