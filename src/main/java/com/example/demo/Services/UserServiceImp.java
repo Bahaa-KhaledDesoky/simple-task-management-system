@@ -35,7 +35,7 @@ public class UserServiceImp implements UserService {
     @Override
     public String accessToken(String refreshToken) {
 
-        if (jwtUtils.validateToken(refreshToken)) {
+        if (jwtUtils.validateToken(refreshToken)&&jwtUtils.isRefreshToken(refreshToken)) {
             String email = jwtUtils.extractEmail(refreshToken);
             AppUser appUser= findUserByEmail(email);
             if(!appUser.getRefreshToken().equals(refreshToken))
