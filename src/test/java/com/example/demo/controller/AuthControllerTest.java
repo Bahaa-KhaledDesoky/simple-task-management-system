@@ -21,8 +21,6 @@ class AuthControllerTest {
     @Mock
     private UserServiceImp userServiceImp;
 
-    @Mock
-    private AuthService authService;
 
     @InjectMocks
     private AuthController authController;
@@ -67,7 +65,7 @@ class AuthControllerTest {
     void testAccessToken() {
         // given
         String refresh = "refreshToken123";
-        when(authService.accessToken(refresh)).thenReturn("newAccessToken456");
+        when(userServiceImp.accessToken(refresh)).thenReturn("newAccessToken456");
 
         // when
         ResponseEntity<?> response = authController.accessToken(refresh);
@@ -75,6 +73,6 @@ class AuthControllerTest {
         // then
         assertEquals(200, response.getStatusCodeValue());
         assertEquals("newAccessToken456", response.getBody());
-        verify(authService, times(1)).accessToken(refresh);
+        verify(userServiceImp, times(1)).accessToken(refresh);
     }
 }

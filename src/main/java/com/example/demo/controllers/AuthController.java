@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final UserServiceImp userServiceImp;
-    private final AuthService authService;
     @PostMapping("/register")
     public ResponseEntity<?> signUp(@Validated @RequestBody Registration registration) {
         Integer id= userServiceImp.signUp(registration);
@@ -29,7 +28,7 @@ public class AuthController {
     }
     @GetMapping("/{refresh}")
     public ResponseEntity<?> accessToken(@PathVariable String refresh) {
-        String token=authService.accessToken(refresh);
+        String token=userServiceImp.accessToken(refresh);
         return ResponseEntity.ok(token);
     }
 }

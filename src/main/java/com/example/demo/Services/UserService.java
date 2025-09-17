@@ -6,6 +6,7 @@ import com.example.demo.Dtos.TokenResponse;
 import com.example.demo.model.AppUser;
 import jakarta.servlet.http.HttpServletRequest;
 public interface UserService {
+    String accessToken(String refreshToken);
     AppUser getUser(HttpServletRequest request);
     Integer signUp(Registration registration);
     boolean userExist(String email);

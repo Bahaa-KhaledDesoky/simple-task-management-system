@@ -2,7 +2,6 @@ package com.example.demo.Mapping;
 
 import com.example.demo.Dtos.Registration;
 import com.example.demo.model.AppUser;
-import com.example.demo.Dtos.SignIn;
 import org.springframework.stereotype.Component;
 
 @Component

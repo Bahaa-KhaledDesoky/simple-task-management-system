@@ -2,6 +2,7 @@ package com.example.demo.Services;
 
 import com.example.demo.Dtos.LogInRequest;
 import com.example.demo.Dtos.Registration;
+import com.example.demo.Exceptions.InvalidTokenException;
 import com.example.demo.Exceptions.UserExistException;
 import com.example.demo.Exceptions.UserNotFoundException;
 import com.example.demo.Exceptions.WrongPasswordExceprion;
@@ -32,6 +33,20 @@ public class UserServiceImp implements UserService {
         return user;
     }
     @Override
+    public String accessToken(String refreshToken) {
+
+        if (jwtUtils.validateToken(refreshToken)) {
+            String email = jwtUtils.extractEmail(refreshToken);
+            AppUser appUser= findUserByEmail(email);
+            if(!appUser.getRefreshToken().equals(refreshToken))
+                throw new InvalidTokenException();
+            String newAccessToken = jwtUtils.generateToken(email);
+            return newAccessToken;
+        } else {
+            throw new InvalidTokenException();
+        }
+    }
+        @Override
     public Integer signUp(Registration registration) {
         try {
             if (userExist(registration.email())) {
