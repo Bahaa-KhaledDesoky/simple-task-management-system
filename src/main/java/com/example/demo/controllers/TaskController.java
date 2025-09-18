@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.Dtos.TaskDto;
+import com.example.demo.Dtos.TaskUpdate;
 import com.example.demo.Services.TaskServiceImp;
 import com.example.demo.Services.UserServiceImp;
 import com.example.demo.model.AppUser;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/api/task")
+@RequestMapping("/task")
 @RequiredArgsConstructor
 public class TaskController {
     private final TaskServiceImp taskService;
@@ -25,10 +26,10 @@ public class TaskController {
         return ResponseEntity.ok(taskService.getAllTaskOfUser(user));
     }
     @PutMapping("/{taskid}")
-    public ResponseEntity<?> updateTaskOfUser(HttpServletRequest request, @PathVariable Integer taskid)
+    public ResponseEntity<?> updateTaskOfUser(HttpServletRequest request, @PathVariable Integer taskid,@Validated @RequestBody TaskUpdate taskUpdate)
     {
             AppUser user =userServiceImp.getUser(request);
-            taskService.updateTask(taskid,user.getId());
+            taskService.updateTask(taskid,user.getId(),taskUpdate.status());
             return ResponseEntity.ok(HttpStatus.ACCEPTED);
     }
     @PostMapping

@@ -14,7 +14,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWRAZ21haWwuY29tIiwiaWF0IjoxNzU3OTA3MDU1LCJleHAiOjE3NTg1MTE4NTV9.AlKvuUFpmvWpZA0GzYVqUSReFic6XFxnxy4s2lcPgKk",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiYmFoYWFAZ21haWwuY29tIiwiaWF0IjoxNzU4MTg3MTU4LCJleHAiOjE3NTgxODcyMTh9.XtC_-f6RmzYOv9AnHv9vHbzI8aybx2Hqkzv6I4Y5xQ8",
 							"type": "string"
 						}
 					]
@@ -23,7 +23,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\":\"create\",\r\n                     \"description\":\"check the create api\",\r\n                     \"status\":\"open\"\r\n}",
+					"raw": "{\r\n    \"title\":\"create\",\r\n                     \"description\":\"check the create api\",\r\n                     \"status\":\"open\"\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -31,14 +31,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/task",
+					"raw": "http://localhost:8080/task",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"api",
 						"task"
 					]
 				}
@@ -56,7 +55,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWRAZ21haWwuY29tIiwiaWF0IjoxNzU3OTA3MzkzLCJleHAiOjE3NTg1MTIxOTN9.TDu76GYi5TvTcDIy5zO8GttFWJ7-evkiO95vkk6Ui88",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiYmFoYWFAZ21haWwuY29tIiwiaWF0IjoxNzU4MTg3MjUyLCJleHAiOjE3NTgxODczMTJ9.YKko5asBo6Q_RCU3Z_9sxx99o7-8FyAGFjwYL18bxqY",
 							"type": "string"
 						}
 					]
@@ -73,14 +72,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/task",
+					"raw": "http://localhost:8080/task",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"api",
 						"task"
 					]
 				}
@@ -95,25 +93,32 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWRAZ21haWwuY29tIiwiaWF0IjoxNzU3OTA3MzkzLCJleHAiOjE3NTg1MTIxOTN9.TDu76GYi5TvTcDIy5zO8GttFWJ7-evkiO95vkk6Ui88",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiYmFoYWFAZ21haWwuY29tIiwiaWF0IjoxNzU4MTg3MjUyLCJleHAiOjE3NTgxODczMTJ9.YKko5asBo6Q_RCU3Z_9sxx99o7-8FyAGFjwYL18bxqY",
 							"type": "string"
 						}
 					]
 				},
 				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"status\":\"del\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:8080/api/task/2/start",
+					"raw": "http://localhost:8080/task/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"api",
 						"task",
-						"2",
-						"start"
+						"1"
 					]
 				}
 			},
@@ -127,7 +132,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWRAZ21haWwuY29tIiwiaWF0IjoxNzU3OTA3MzkzLCJleHAiOjE3NTg1MTIxOTN9.TDu76GYi5TvTcDIy5zO8GttFWJ7-evkiO95vkk6Ui88",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiYmFoYWFAZ21haWwuY29tIiwiaWF0IjoxNzU4MTg3MzUxLCJleHAiOjE3NTgxODc0MTF9.8w6wdCzij4tS6wUXQDCmTuTwVN3hmLDQk4dBYNW_52I",
 							"type": "string"
 						}
 					]
@@ -139,16 +144,15 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/task/2",
+					"raw": "http://localhost:8080/task/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"api",
 						"task",
-						"2"
+						"1"
 					]
 				}
 			},

@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"khaled@gmail.com\",\r\n    \"password\":\"000000\"\r\n}",
+					"raw": "{\r\n    \"email\":\"bahaa@gmail.com\",\r\n    \"password\":\"0bB!0000\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,14 +21,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/auth/login",
+					"raw": "http://localhost:8080/auth/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"api",
 						"auth",
 						"login"
 					]
@@ -46,7 +45,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"khaled@gmail.com\",\r\n    \"name\":\"khaled\",\r\n    \"password\":\"0bB!0000\"\r\n}",
+					"raw": "{\r\n    \"email\":\"bahaa@gmail.com\",\r\n    \"name\":\"kh\",\r\n    \"password\":\"0bB!0000\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -54,14 +53,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/auth/register",
+					"raw": "http://localhost:8080/auth/register",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"api",
 						"auth",
 						"register"
 					]
@@ -75,16 +73,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/auth/eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWRAZ21haWwuY29tIiwiaWF0IjoxNzU4MDkyNjQwLCJleHAiOjE3NTgwOTYyNDB9.6rycHHqgLBfo-wuVhbgCGTsTwaXe0E8i5_SHcerS26U",
+					"raw": "http://localhost:8080/auth/eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoicmVmcmVzaCIsInN1YiI6ImJhaGFhQGdtYWlsLmNvbSIsImlhdCI6MTc1ODE4NzI1MiwiZXhwIjoxNzU4NzkyMDUyfQ.mCFcMQ43h50OUWFH86ifyvGLI3LXhaZ9xX_myUqEkUo",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"api",
 						"auth",
-						"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWRAZ21haWwuY29tIiwiaWF0IjoxNzU4MDkyNjQwLCJleHAiOjE3NTgwOTYyNDB9.6rycHHqgLBfo-wuVhbgCGTsTwaXe0E8i5_SHcerS26U"
+						"eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoicmVmcmVzaCIsInN1YiI6ImJhaGFhQGdtYWlsLmNvbSIsImlhdCI6MTc1ODE4NzI1MiwiZXhwIjoxNzU4NzkyMDUyfQ.mCFcMQ43h50OUWFH86ifyvGLI3LXhaZ9xX_myUqEkUo"
 					]
 				}
 			},

@@ -2,16 +2,17 @@ package com.example.demo.controllers;
 
 import com.example.demo.Dtos.LogInRequest;
 import com.example.demo.Dtos.Registration;
-import com.example.demo.Services.AuthService;
 import com.example.demo.Services.UserServiceImp;
 import com.example.demo.Dtos.TokenResponse;
+import com.example.demo.model.AppUser;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -30,6 +31,13 @@ public class AuthController {
     public ResponseEntity<?> accessToken(@PathVariable String refresh) {
         String token=userServiceImp.accessToken(refresh);
         return ResponseEntity.ok(token);
+    }
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(HttpServletRequest request)
+    {
+        AppUser user =userServiceImp.getUser(request);
+        boolean flag = userServiceImp.logOut(user);
+        return ResponseEntity.ok(flag);
     }
 }
 
